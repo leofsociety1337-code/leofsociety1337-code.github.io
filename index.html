@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LEOFSOCIETY1337 :: Secure Transmission</title>
+    <meta charset="utf-8">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #0a0a0a;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        
+        .terminal {
+            max-width: 900px;
+            margin: 0 auto;
+            border: 1px solid #00ff00;
+            padding: 20px;
+            position: relative;
+            background: rgba(0, 20, 0, 0.3);
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+        }
+        
+        .header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #00ff00;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #00ff00;
+            font-size: 24px;
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
+        }
+        
+        .header h2 {
+            color: #009900;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        .message-box {
+            padding: 15px;
+            border: 1px dashed #00aa00;
+            margin: 20px 0;
+            background: rgba(0, 10, 0, 0.4);
+        }
+        
+        .typing {
+            border-right: 2px solid #00ff00;
+            animation: blink 0.7s infinite;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        
+        @keyframes blink {
+            0% { border-color: #00ff00; }
+            50% { border-color: transparent; }
+            100% { border-color: #00ff00; }
+        }
+        
+        .timestamp {
+            color: #008800;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+        
+        .status {
+            color: #ffff00;
+            padding: 10px;
+            border-left: 3px solid #ffff00;
+            margin: 15px 0;
+            background: rgba(255, 255, 0, 0.05);
+        }
+        
+        .encrypted {
+            color: #00ffff;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+        
+        .warning {
+            color: #ff0000;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+        }
+        
+        .command {
+            color: #00aaff;
+        }
+        
+        .footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #003300;
+            text-align: center;
+            font-size: 11px;
+            color: #008800;
+        }
+        
+        .matrix {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.1;
+        }
+        
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.5;
+        }
+        
+        .glitch {
+            position: relative;
+            animation: glitch 5s infinite;
+        }
+        
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="matrix" id="matrix"></div>
+    
+    <div class="terminal">
+        <div class="header glitch">
+            <h1>▓▓▓ LEOFSOCIETY1337 ▓▓▓</h1>
+            <h2>// ENCRYPTED TRANSMISSION // SECURE CHANNEL ACTIVE</h2>
+        </div>
+        
+        <div class="timestamp">
+            [<span id="datetime"></span>] - ENCRYPTION: AES-256 - CHANNEL: SECURE
+        </div>
+        
+        <div class="message-box">
+            <pre>
+█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
+█  TO: LEADER                                         █
+█  FROM: LEOFSOCIETY1337 OPERATIONS                   █
+█  PRIORITY: CRITICAL                                 █
+█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+
+Sir,
+
+Our last transmission indicated we were close to uncovering the 
+blackmailers' infrastructure. We have now completed the operation.
+
+<strong>OPERATION STATUS: SUCCESSFUL</strong>
+
+<strong>[+] SERVER INFILTRATION COMPLETE</strong>
+We penetrated their primary and backup systems. Found 4 operatives 
+working in coordination. Infrastructure located in 3 jurisdictions.
+
+<strong>[+] DATA RECOVERY & NEUTRALIZATION</strong>
+- Located your personal data archives (images, emails, accounts)
+- Recovered college LMS database backups they forced you to extract
+- Found dark web credential dumps containing your aliases
+- <span class="encrypted">ALL DATA HAS BEEN ENCRYPTED WITH OUR CUSTOM RANSOMWARE</span>
+
+<strong>[+] ORIGINS CONFIRMED</strong>
+They identified you through the "Rabbani Toor Gull" Facebook page 
+(as suspected). This appears to be their standard entry vector - 
+we've identified 17 other hackers approached with similar tactics 
+over the past 8 months.
+
+<strong>[+] THREAT NEUTRALIZATION</strong>
+The group is currently offline. We've:
+1. Encrypted their entire operational infrastructure
+2. Planted false logs showing system failure
+3. Sent warning messages from "Unknown Black Hat Alliance"
+4. Burned their communication channels
+
+<strong class="warning">[!] CRITICAL FINDING</strong>
+Your phone is currently compromised. Usage patterns indicate 
+it's NOT being operated by you. The device shows:
+- Uncharacteristic app usage patterns
+- Unfamiliar network connections
+- Possible remote access tool presence
+
+<strong>[+] IMMEDIATE ACTIONS REQUIRED</strong>
+1. <span class="command">Message our secure channel within 24H</span> to confirm identity
+2. If no contact is made, we will initiate <span class="warning">FULL DEVICE ENCRYPTION</span>
+3. Delete all Facebook pages/accounts associated with entry vectors
+4. Assume ALL previous devices are compromised
+
+<strong>[+] FINAL STATUS</strong>
+You are now <span class="encrypted">101% SECURE</span> from this threat group.
+Your college data has been sanitized from their systems.
+The blackmail operation against you has been terminated.
+
+We advised you months ago to encrypt your phone. We understand 
+you stepped away from operations, but unfortunately, you became 
+a target. We have your back, Leader.
+
+This channel will remain open for 24 hours.
+
+<strong>END TRANSMISSION</strong>
+
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+            </pre>
+        </div>
+        
+        <div class="status">
+            [STATUS] CONNECTION: SECURE || DATA: ENCRYPTED || ROUTING: TOR RELAY x12
+        </div>
+        
+        <div class="footer">
+            <div class="typing" id="typing-text"></div>
+            <br><br>
+            LEOFSOCIETY1337 © SECURE TRANSMISSION | TTL: 24H | AUTO-DESTRUCT ENABLED
+            <br>
+            [This message will self-destruct after being read 3 times]
+        </div>
+    </div>
+
+    <script>
+        // Set current date/time
+        const now = new Date();
+        const datetime = now.toUTCString().replace('GMT', 'ZULU');
+        document.getElementById('datetime').textContent = datetime;
+        
+        // Matrix effect
+        const matrix = document.getElementById('matrix');
+        const chars = '01';
+        let matrixText = '';
+        
+        for(let i = 0; i < 2000; i++) {
+            matrixText += chars.charAt(Math.floor(Math.random() * chars.length));
+            if(i % 100 === 0 && i !== 0) matrixText += '\n';
+        }
+        matrix.textContent = matrixText;
+        
+        // Typing effect
+        const typingText = ">> TRANSMISSION DECRYPTED... WELCOME BACK, LEADER...";
+        let i = 0;
+        function typeWriter() {
+            if (i < typingText.length) {
+                document.getElementById("typing-text").innerHTML = typingText.substring(0, i+1);
+                i++;
+                setTimeout(typeWriter, 50);
+            } else {
+                document.getElementById("typing-text").style.animation = "none";
+            }
+        }
+        
+        // Start typing effect
+        setTimeout(typeWriter, 1000);
+        
+        // Glitch effect randomizer
+        setInterval(() => {
+            const glitch = document.querySelector('.glitch');
+            glitch.style.animation = 'none';
+            setTimeout(() => {
+                glitch.style.animation = 'glitch ' + (Math.random() * 3 + 2) + 's infinite';
+            }, 10);
+        }, 5000);
+        
+        // Terminal blink effect
+        const terminal = document.querySelector('.terminal');
+        setInterval(() => {
+            terminal.style.boxShadow = '0 0 ' + (Math.random() * 25 + 15) + 'px rgba(0, 255, 0, ' + (Math.random() * 0.3 + 0.1) + ')';
+        }, 3000);
+    </script>
+</body>
+</html>
