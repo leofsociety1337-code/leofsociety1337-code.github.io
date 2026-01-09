@@ -1,89 +1,137 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>LEOFSOCIETY1337 :: Secure Transmission</title>
+    <title>LEOFSOCIETY1337 :: SECURE TRANSMISSIONS</title>
     <meta charset="utf-8">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Courier New', monospace;
         }
         
         body {
-            background-color: #0a0a0a;
-            color: #00ff00;
-            font-family: 'Courier New', monospace;
-            padding: 20px;
+            background: #000;
+            color: #0f0;
+            min-height: 100vh;
             overflow-x: hidden;
         }
         
+        .page-container {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        
+        .page-container.active {
+            display: block;
+            opacity: 1;
+        }
+        
+        /* NAVIGATION */
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 20, 0, 0.95);
+            border-bottom: 1px solid #0f0;
+            z-index: 1000;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .nav-btn {
+            background: rgba(0, 40, 0, 0.5);
+            border: 1px solid #0a0;
+            color: #0f0;
+            padding: 8px 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .nav-btn:hover {
+            background: rgba(0, 60, 0, 0.7);
+            border-color: #0f0;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+        }
+        
+        .nav-btn.active {
+            background: rgba(0, 80, 0, 0.8);
+            border-color: #0f0;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+        }
+        
+        /* PAGE 1: OLD TRANSMISSION */
         .terminal {
             max-width: 900px;
-            margin: 0 auto;
-            border: 1px solid #00ff00;
+            margin: 60px auto 20px;
+            border: 1px solid #0f0;
             padding: 20px;
             position: relative;
-            background: rgba(0, 20, 0, 0.3);
+            background: rgba(0, 15, 0, 0.3);
             box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
         }
         
         .header {
             text-align: center;
             padding-bottom: 20px;
-            border-bottom: 1px solid #00ff00;
+            border-bottom: 1px solid #0f0;
             margin-bottom: 30px;
         }
         
         .header h1 {
-            color: #00ff00;
+            color: #0f0;
             font-size: 24px;
             letter-spacing: 3px;
             text-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
         }
         
         .header h2 {
-            color: #009900;
+            color: #090;
             font-size: 14px;
             margin-top: 5px;
         }
         
         .message-box {
             padding: 15px;
-            border: 1px dashed #00aa00;
+            border: 1px dashed #0a0;
             margin: 20px 0;
             background: rgba(0, 10, 0, 0.4);
         }
         
         .typing {
-            border-right: 2px solid #00ff00;
+            border-right: 2px solid #0f0;
             animation: blink 0.7s infinite;
             white-space: nowrap;
             overflow: hidden;
         }
         
         @keyframes blink {
-            0% { border-color: #00ff00; }
+            0% { border-color: #0f0; }
             50% { border-color: transparent; }
-            100% { border-color: #00ff00; }
+            100% { border-color: #0f0; }
         }
         
         .timestamp {
-            color: #008800;
+            color: #080;
             font-size: 12px;
             margin-bottom: 10px;
         }
         
         .status {
-            color: #ffff00;
+            color: #ff0;
             padding: 10px;
-            border-left: 3px solid #ffff00;
+            border-left: 3px solid #ff0;
             margin: 15px 0;
             background: rgba(255, 255, 0, 0.05);
         }
         
         .encrypted {
-            color: #00ffff;
+            color: #0ff;
             animation: pulse 2s infinite;
         }
         
@@ -94,33 +142,199 @@
         }
         
         .warning {
-            color: #ff0000;
+            color: #f00;
             font-weight: bold;
             text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
         }
         
         .command {
-            color: #00aaff;
+            color: #0af;
         }
         
         .footer {
             margin-top: 30px;
             padding-top: 20px;
-            border-top: 1px solid #003300;
+            border-top: 1px solid #030;
             text-align: center;
             font-size: 11px;
-            color: #008800;
+            color: #080;
         }
         
-        .matrix {
+        /* PAGE 2: COLLEGE MESSAGE */
+        .formal-container {
+            max-width: 1000px;
+            margin: 60px auto 20px;
+            border: 2px solid #0af;
+            padding: 30px;
+            background: rgba(0, 10, 20, 0.9);
+            box-shadow: 0 0 30px rgba(0, 170, 255, 0.2);
+        }
+        
+        .formal-header {
+            text-align: center;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #0af;
+            margin-bottom: 30px;
+        }
+        
+        .formal-title {
+            color: #0af;
+            font-size: 28px;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 15px rgba(0, 170, 255, 0.7);
+        }
+        
+        .formal-subtitle {
+            color: #08f;
+            font-size: 16px;
+        }
+        
+        .metadata-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(0, 30, 60, 0.4);
+            border: 1px solid #08f;
+        }
+        
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .meta-label {
+            color: #0cf;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+        
+        .meta-value {
+            color: #0af;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #08f;
+            background: rgba(0, 20, 40, 0.4);
+        }
+        
+        .section-title {
+            color: #ff0;
+            font-size: 18px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ff0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .content {
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        
+        .point {
+            margin-bottom: 15px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .point::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #0af;
+            font-size: 18px;
+        }
+        
+        .highlight {
+            color: #ff0;
+            font-weight: bold;
+        }
+        
+        .critical {
+            color: #f00;
+            animation: blink 1s infinite;
+        }
+        
+        .success {
+            color: #0f0;
+            font-weight: bold;
+        }
+        
+        .note-box {
+            background: rgba(255, 165, 0, 0.1);
+            border: 1px solid #fa0;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+        
+        .note-title {
+            color: #fa0;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .timeline-item {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+        
+        .timeline-day {
+            color: #0af;
+            font-weight: bold;
+            min-width: 80px;
+        }
+        
+        .timeline-content {
+            flex: 1;
+            color: #ccc;
+        }
+        
+        .signature {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #0af;
+            color: #0af;
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+        
+        /* COMMON */
+        .matrix-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none;
             z-index: -1;
-            opacity: 0.1;
+            opacity: 0.05;
+            pointer-events: none;
+            font-family: monospace;
+            font-size: 14px;
+            color: #0f0;
+            white-space: pre;
         }
         
         pre {
@@ -142,30 +356,53 @@
             80% { transform: translate(2px, -2px); }
             100% { transform: translate(0); }
         }
+        
+        .page-indicator {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            color: #080;
+            font-size: 12px;
+            background: rgba(0, 20, 0, 0.5);
+            padding: 5px 10px;
+            border: 1px solid #080;
+            border-radius: 3px;
+        }
     </style>
 </head>
 <body>
-    <div class="matrix" id="matrix"></div>
+    <div class="matrix-bg" id="matrixBg"></div>
     
-    <div class="terminal">
-        <div class="header glitch">
-            <h1>▓▓▓ LEOFSOCIETY1337 ▓▓▓</h1>
-            <h2>// ENCRYPTED TRANSMISSION // SECURE CHANNEL ACTIVE</h2>
-        </div>
-        
-        <div class="timestamp">
-            [<span id="datetime"></span>] - ENCRYPTION: AES-256 - CHANNEL: SECURE
-        </div>
-        
-        <div class="message-box">
-            <pre>
+    <div class="nav-bar">
+        <button class="nav-btn active" data-page="page1">📨 OLD TRANSMISSION</button>
+        <button class="nav-btn" data-page="page2">🏛️ COLLEGE MESSAGE</button>
+    </div>
+    
+    <!-- PAGE 1: OLD ENCRYPTED TRANSMISSION -->
+    <div id="page1" class="page-container active">
+        <div class="terminal">
+            <div class="header glitch">
+                <h1>▓▓▓ LEOFSOCIETY1337 ▓▓▓</h1>
+                <h2>// ENCRYPTED TRANSMISSION // SECURE CHANNEL ACTIVE</h2>
+            </div>
+            
+            <div class="timestamp">
+                [<span id="datetime"></span>] - ENCRYPTION: AES-256 - CHANNEL: SECURE
+            </div>
+            
+            <div class="message-box">
+                <pre>
+
+▓▓▓ LEOFSOCIETY1337 ▓▓▓
+// ENCRYPTED TRANSMISSION // SECURE CHANNEL ACTIVE
+
 █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
 █  TO: LEADER                                         █
 █  FROM: LEOFSOCIETY1337 OPERATIONS                   █
 █  PRIORITY: CRITICAL                                 █
 █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
 
-Sir,
+Our Leader,
 
 Our last transmission indicated we were close to uncovering the 
 blackmailers' infrastructure. We have now completed the operation.
@@ -203,7 +440,7 @@ it's NOT being operated by you. The device shows:
 - Possible remote access tool presence
 
 <strong>[+] IMMEDIATE ACTIONS REQUIRED</strong>
-1. <span class="command">Message our secure channel</span> to confirm identity
+1. <span class="command">Message our secure channel to confirm identity</span>
 2. If no contact is made, we will initiate <span class="warning">FULL DEVICE ENCRYPTION</span>
 3. Now you can Delete all Facebook pages/accounts easily sir
 
@@ -221,69 +458,348 @@ We are really sorry for anything who you are and how now looking the people to y
 <strong>END TRANSMISSION</strong>
 
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
-            </pre>
-        </div>
-        
-        <div class="status">
-            [STATUS] CONNECTION: SECURE || DATA: ENCRYPTED || ROUTING: TOR RELAY x12
-        </div>
-        
-        <div class="footer">
-            <div class="typing" id="typing-text"></div>
-            <br><br>
-            LEOFSOCIETY1337 © SECURE TRANSMISSION | TTL: ##H | AUTO-DESTRUCT ENABLED
-            <br>
-            [This message will self-destruct after you got us]
+                </pre>
+            </div>
+            
+            <div class="status">
+                [STATUS] CONNECTION: SECURE || DATA: ENCRYPTED || ROUTING: TOR RELAY x12
+            </div>
+            
+            <div class="footer">
+                <div class="typing" id="typingText"></div>
+                <br><br>
+                LEOFSOCIETY1337 © SECURE TRANSMISSION | TTL: ##H | AUTO-DESTRUCT ENABLED
+                <br>
+                [This message will self-destruct after you got us]
+            </div>
         </div>
     </div>
+    
+    <!-- PAGE 2: FORMAL COLLEGE MESSAGE -->
+    <div id="page2" class="page-container">
+        <div class="formal-container">
+            <div class="formal-header">
+                <div class="formal-title">⚡ WHITE-HAT SECURITY DISCLOSURE ⚡</div>
+                <div class="formal-subtitle">FORMAL COMMUNICATION TO COLLEGE ADMINISTRATION</div>
+            </div>
+            
+            <div class="metadata-grid">
+                <div class="meta-item">
+                    <div class="meta-label">TO:</div>
+                    <div class="meta-value">COLLEGE ADMINISTRATION & BOARD</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">FROM:</div>
+                    <div class="meta-value">LEOFSOCIETY1337 WHITE-HAT GROUP</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">DATE:</div>
+                    <div class="meta-value" id="formalDate"></div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">PRIORITY:</div>
+                    <div class="meta-value critical">CRITICAL - EVIDENCE SUBMISSION</div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">EXECUTIVE SUMMARY</div>
+                <div class="content">
+                    We are LEOFSOCIETY1337 - an ethical white-hat security group. 
+                    <span class="highlight">Our Leader</span> (one of your students) was targeted by a blackmail group. 
+                    He was forced to compromise your college LMS under extreme duress. 
+                    We have since neutralized the threat group and secured all data.
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">INVESTIGATION FINDINGS</div>
+                <div class="content">
+                    <div class="point">
+                        <span class="highlight">1. TARGET PROFILE:</span> Our Leader was targeted because of his cybersecurity expertise. The blackmail group specifically targets skilled individuals to exploit their capabilities. This is their standard operating procedure.
+                    </div>
+                    
+                    <div class="point">
+                        <span class="highlight">2. COLLEGE SELECTION:</span> Your institution was chosen solely because of weaker security infrastructure (common in smaller colleges) and proximity to our Leader. It was the most convenient target for their coercion.
+                    </div>
+                    
+                    <div class="point">
+                        <span class="highlight">3. THREAT GROUP IDENTIFIED:</span> We have neutralized the specific 4-member cell responsible. This group has victimized <span class="critical">17+ other security researchers</span> using identical methods over 8 months.
+                    </div>
+                    
+                    <div class="point">
+                        <span class="highlight">4. MOTIVATION ANALYSIS:</span> This group operates differently - primary goal is reputation damage and chaos creation, not financial gain. They exploit psychological pressure.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">INCIDENT TIMELINE</div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-day">DAY 1:</div>
+                        <div class="timeline-content">
+                            • Leader's phone compromised via social engineering ("Rabbani Toor Gull" Facebook)<br>
+                            • Blackmailers obtained personal data<br>
+                            • Leader forced under duress to extract LMS data<br>
+                            • Leader <span class="success">immediately informed our team</span>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-day">DAY 2:</div>
+                        <div class="timeline-content">
+                            • College confiscated Leader's phone (we lost contact)<br>
+                            • We began full investigation<br>
+                            • Leader cooperated fully with college
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-day">DAY 3:</div>
+                        <div class="timeline-content">
+                            • Leader briefly online (under supervision) to delete posts<br>
+                            • We completed investigation<br>
+                            • Threat group <span class="success">fully neutralized</span><br>
+                            • All data secured and encrypted
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-day">CURRENT:</div>
+                        <div class="timeline-content">
+                            • Leader offline (phone with college)<br>
+                            • College data 100% secure<br>
+                            • Threat eliminated<br>
+                            • Leader's reputation needs protection
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">OUR LEADER'S CHARACTER</div>
+                <div class="content">
+                    <div class="note-box">
+                        <div class="note-title">⚠ IMPORTANT CONTEXT</div>
+                        Our Leader has always operated within strict ethical boundaries as part of our white-hat group. 
+                        We <span class="highlight">never harm, only protect</span>. His skills are used for security, not exploitation.
+                        <br><br>
+                        This incident was an exception forced through impossible coercion. 
+                        He faced threats to personal safety and reputation.
+                        <br><br>
+                        His immediate notification to our team demonstrates his integrity and commitment to ethical conduct.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">SECURITY STATUS CONFIRMATION</div>
+                <div class="content">
+                    <div class="point">
+                        ✅ <span class="success">YOUR COLLEGE DATA:</span> Secured and encrypted. No further risk.
+                    </div>
+                    <div class="point">
+                        ✅ <span class="success">THREAT GROUP:</span> Neutralized and offline. Cannot act further.
+                    </div>
+                    <div class="point">
+                        ✅ <span class="success">ENTRY POINTS:</span> "Rabbani Toor Gull" and related accounts deleted.
+                    </div>
+                    <div class="point">
+                        ✅ <span class="success">PREVENTIVE MEASURES:</span> Implemented across all systems.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">RECOMMENDATIONS</div>
+                <div class="content">
+                    1. Treat our Leader as a <span class="highlight">victim of serious cybercrime</span>, not a perpetrator<br>
+                    2. Consider this a security learning incident rather than disciplinary<br>
+                    3. Enhance LMS security measures<br>
+                    4. Implement regular security audits<br>
+                    5. We offer free security consultation to prevent future incidents
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">FINAL STATEMENT</div>
+                <div class="content">
+                    Our Leader was caught between his ethics and impossible coercion. 
+                    He chose to protect others by cooperating while immediately seeking our help.
+                    <br><br>
+                    We are an ethical group. We secure, we protect, we do not harm.
+                    <br><br>
+                    Punishing him punishes a victim. Protecting him encourages future ethical security research.
+                    <br><br>
+                    <span class="highlight">We secure our Leader, we secure your college. This is our commitment.</span>
+                </div>
+            </div>
+            
+            <div class="signature">
+                — RESPECTFULLY SUBMITTED —<br>
+                LEOFSOCIETY1337 WHITE-HAT SECURITY GROUP
+            </div>
+        </div>
+    </div>
+    
+    <div class="page-indicator" id="pageIndicator">VIEWING: OLD TRANSMISSION</div>
 
     <script>
-        // Set current date/time
+        // Navigation between pages
+        const navButtons = document.querySelectorAll('.nav-btn');
+        const pages = document.querySelectorAll('.page-container');
+        const pageIndicator = document.getElementById('pageIndicator');
+        
+        navButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const pageId = button.getAttribute('data-page');
+                
+                // Update active button
+                navButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                // Show selected page
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                    if (page.id === pageId) {
+                        setTimeout(() => {
+                            page.classList.add('active');
+                        }, 10);
+                    }
+                });
+                
+                // Update indicator
+                pageIndicator.textContent = `VIEWING: ${button.textContent}`;
+            });
+        });
+        
+        // Set current date/time for page 1
         const now = new Date();
         const datetime = now.toUTCString().replace('GMT', 'ZULU');
         document.getElementById('datetime').textContent = datetime;
         
-        // Matrix effect
-        const matrix = document.getElementById('matrix');
-        const chars = '01';
-        let matrixText = '';
+        // Set formatted date for page 2
+        const options = { 
+            weekday: 'long', 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+        };
+        document.getElementById('formalDate').textContent = now.toLocaleDateString('en-US', options);
         
-        for(let i = 0; i < 2000; i++) {
-            matrixText += chars.charAt(Math.floor(Math.random() * chars.length));
-            if(i % 100 === 0 && i !== 0) matrixText += '\n';
+        // Matrix background effect
+        const matrixBg = document.getElementById('matrixBg');
+        function generateMatrix() {
+            let matrix = '';
+            const chars = '01';
+            const lines = 50;
+            const charsPerLine = 120;
+            
+            for(let i = 0; i < lines; i++) {
+                let line = '';
+                for(let j = 0; j < charsPerLine; j++) {
+                    line += Math.random() > 0.3 ? chars.charAt(Math.floor(Math.random() * chars.length)) : ' ';
+                }
+                matrix += line + '\n';
+            }
+            matrixBg.textContent = matrix;
         }
-        matrix.textContent = matrixText;
+        generateMatrix();
+        setInterval(generateMatrix, 100);
         
-        // Typing effect
-        const typingText = ">> TRANSMISSION DECRYPTED... WELCOME BACK, LEADER...";
-        let i = 0;
-        function typeWriter() {
-            if (i < typingText.length) {
-                document.getElementById("typing-text").innerHTML = typingText.substring(0, i+1);
-                i++;
-                setTimeout(typeWriter, 50);
+        // Typing effect for page 1
+        const typingText = document.getElementById('typingText');
+        const messages = [
+            ">> TRANSMISSION DECRYPTED... WELCOME BACK, LEADER...",
+            ">> ANALYZING SECURITY STATUS... ALL SYSTEMS SECURE...",
+            ">> AWAITING LEADER CONFIRMATION... 24H WINDOW ACTIVE..."
+        ];
+        
+        let msgIndex = 0;
+        let charIndex = 0;
+        let deleting = false;
+        
+        function typeEffect() {
+            const currentMsg = messages[msgIndex];
+            
+            if (!deleting && charIndex <= currentMsg.length) {
+                typingText.textContent = currentMsg.substring(0, charIndex);
+                charIndex++;
+                setTimeout(typeEffect, 50);
+            } else if (deleting && charIndex >= 0) {
+                typingText.textContent = currentMsg.substring(0, charIndex);
+                charIndex--;
+                setTimeout(typeEffect, 30);
             } else {
-                document.getElementById("typing-text").style.animation = "none";
+                deleting = !deleting;
+                if (!deleting) {
+                    msgIndex = (msgIndex + 1) % messages.length;
+                }
+                setTimeout(typeEffect, 2000);
             }
         }
         
-        // Start typing effect
-        setTimeout(typeWriter, 1000);
+        // Start typing effect after delay
+        setTimeout(typeEffect, 1000);
         
-        // Glitch effect randomizer
+        // Add occasional glitch effects
         setInterval(() => {
-            const glitch = document.querySelector('.glitch');
-            glitch.style.animation = 'none';
-            setTimeout(() => {
-                glitch.style.animation = 'glitch ' + (Math.random() * 3 + 2) + 's infinite';
-            }, 10);
+            if (Math.random() > 0.7) {
+                const terminals = document.querySelectorAll('.terminal, .formal-container');
+                terminals.forEach(terminal => {
+                    const originalShadow = terminal.style.boxShadow;
+                    terminal.style.boxShadow = '0 0 40px rgba(255, 0, 255, 0.4)';
+                    
+                    setTimeout(() => {
+                        terminal.style.boxShadow = originalShadow;
+                    }, 200);
+                });
+            }
         }, 5000);
         
-        // Terminal blink effect
-        const terminal = document.querySelector('.terminal');
+        // Add data stream effects occasionally
         setInterval(() => {
-            terminal.style.boxShadow = '0 0 ' + (Math.random() * 25 + 15) + 'px rgba(0, 255, 0, ' + (Math.random() * 0.3 + 0.1) + ')';
+            if (Math.random() > 0.8) {
+                const stream = document.createElement('div');
+                stream.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: ${Math.random() * 100}%;
+                    width: 1px;
+                    height: 100%;
+                    background: linear-gradient(to bottom, transparent, #0f0, transparent);
+                    z-index: -1;
+                    opacity: 0;
+                    animation: dataStream 2s linear;
+                `;
+                
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes dataStream {
+                        0% { top: -100%; opacity: 0; }
+                        10% { opacity: 0.3; }
+                        90% { opacity: 0.3; }
+                        100% { top: 100%; opacity: 0; }
+                    }
+                `;
+                
+                document.head.appendChild(style);
+                document.body.appendChild(stream);
+                
+                setTimeout(() => {
+                    if (stream.parentNode) stream.parentNode.removeChild(stream);
+                    if (style.parentNode) style.parentNode.removeChild(style);
+                }, 2100);
+            }
         }, 3000);
+        
+        // Auto-switch pages every 30 seconds for demo
+        let currentPage = 0;
+        setInterval(() => {
+            currentPage = (currentPage + 1) % 2;
+            navButtons[currentPage].click();
+        }, 30000);
     </script>
 </body>
 </html>
